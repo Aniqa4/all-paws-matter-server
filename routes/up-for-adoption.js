@@ -6,9 +6,9 @@ const router=express.Router();
 router.get('/', async (req, res) => {
     try {
       // Use the Services model to fetch data from the "services" collection
-      const services = await UpForAdoption.find();
+      const upForAdoption = await UpForAdoption.find();
       // Send the retrieved data as a JSON response
-      res.json(services);
+      res.json(upForAdoption);
     } catch (error) {
       // Handle any errors that occur during the database query
       console.error('Error fetching services:', error);

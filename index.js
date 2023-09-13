@@ -5,6 +5,8 @@ require('dotenv').config();
 const {connectMongoDB}= require('./connection')
 const servicesRouter= require('./routes/services')
 const upForAdoptionRouter= require('./routes/up-for-adoption')
+const rescuedAnimalsRouter= require('./routes/rescued-animals')
+const veterinariansRouter= require('./routes/veterinarians')
 
 const app = express()
 const port = process.env.PORT || 5000;
@@ -20,6 +22,8 @@ connectMongoDB(`mongodb+srv://${process.env.user_name}:${process.env.password}@c
 
 app.use("/services",servicesRouter)
 app.use("/up-for-adoption",upForAdoptionRouter)
+app.use("/rescued-animals",rescuedAnimalsRouter)
+app.use("/veterinarians",veterinariansRouter)
 
 app.get('/', (req, res) => {
     res.send('Hello World!')
