@@ -16,8 +16,9 @@ const veterinarianSchema = new mongoose.Schema(
         },
         years_of_experience: {
             type: String,
+            required: true
         },
-        type: {
+        phoneNumber: {
             type: String,
             required: true
         },
