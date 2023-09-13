@@ -1,8 +1,10 @@
 const express = require('express')
 const cors = require('cors');
-const  mongoose  = require('mongoose');
 require('dotenv').config();
+
+const {connectMongoDB}= require('./connection')
 const servicesRouter= require('./routes/services')
+const upForAdoptionRouter= require('./routes/up-for-adoption')
 
 const app = express()
 const port = process.env.PORT || 5000;
@@ -13,12 +15,11 @@ app.use(express.json());
 
 
 //connecting to mongodb
-mongoose
-    .connect(`mongodb+srv://${process.env.user_name}:${process.env.password}@cluster0.3kab2ba.mongodb.net/services?retryWrites=true&w=majority`)
-    .then(()=>console.log('MongoDB Connected'))
-    .catch((err)=>console.log("Mongo Error",err))
+connectMongoDB(`mongodb+srv://${process.env.user_name}:${process.env.password}@cluster0.3kab2ba.mongodb.net/services?retryWrites=true&w=majority`)
+
 
 app.use("/services",servicesRouter)
+app.use("/up-for-adoption",upForAdoptionRouter)
 
 app.get('/', (req, res) => {
     res.send('Hello World!')
