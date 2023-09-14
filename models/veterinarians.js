@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const veterinarianSchema = new mongoose.Schema(
     {
-        vetName: {
+        name: {
             type: String,
             required: true
         },
@@ -18,7 +18,7 @@ const veterinarianSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        phoneNumber: {
+        phone_number: {
             type: String,
             required: true
         },
