@@ -23,7 +23,6 @@ const rescuedAnimalSchema = new mongoose.Schema(
         },
         date: {
             type: Date,
-            default: Date.now,
         },
         description: {
             type: String

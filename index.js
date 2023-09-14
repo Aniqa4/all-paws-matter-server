@@ -15,10 +15,8 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-
 //connecting to mongodb
 connectMongoDB(`mongodb+srv://${process.env.user_name}:${process.env.password}@cluster0.3kab2ba.mongodb.net/services?retryWrites=true&w=majority`)
-
 
 app.use("/services",servicesRouter)
 app.use("/up-for-adoption",upForAdoptionRouter)

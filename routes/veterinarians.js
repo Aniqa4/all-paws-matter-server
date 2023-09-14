@@ -13,4 +13,16 @@ router.get('/', async (req, res) => {
     }
   });  
 
+  router.post("/", async (req, res) => {
+    try {
+      const newData = req.body;
+      const newVet = new Veterinarians(newData);
+      const result = await newVet.save();
+      res.json(result);
+    } catch (error) {
+      console.error('Error creating new data:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  })
+
 module.exports= router;

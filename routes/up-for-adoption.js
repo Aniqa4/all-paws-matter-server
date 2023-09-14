@@ -16,4 +16,16 @@ router.get('/', async (req, res) => {
     }
   });  
 
+  router.post("/", async (req, res) => {
+    try {
+      const newData = req.body;
+      const newAnimal = new UpForAdoption(newData);
+      const result = await newAnimal.save();
+      res.json(result);
+    } catch (error) {
+      console.error('Error creating new data:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  })
+
 module.exports= router;
